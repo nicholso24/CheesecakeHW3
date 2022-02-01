@@ -1,0 +1,30 @@
+eventHandler = function ( event ) {
+
+		let myText = document.getElementById("textarea").value;
+		if(myText.toLowerCase().includes("vegan")) {
+			document.getElementById("warning").style.display = "block";
+		}
+		else {
+			document.getElementById("first").style.display = "none";
+			document.getElementById("textarea").style.display = "none";
+			document.getElementById("second").style.display = "block";
+			document.getElementById("notes").style.display = "none";
+			document.getElementById("button").style.display = "none";
+			var p = document.getElementById("second");
+			p.textContent += " Quantity: ";
+			p.textContent += document.getElementById("quantity").value;
+			p.textContent += " Flavor: ";
+			var ele = document.getElementsByName('flavour');
+			for(i = 0; i < ele.length; i++) {
+				if(ele[i].checked){
+				p.textContent += ele[i].value;
+			}
+		}
+	
+	}
+		p.textContent += " Notes: ";
+		p.textContent += myText;
+	}
+$(function() {
+	$(".button").click(eventHandler);
+});

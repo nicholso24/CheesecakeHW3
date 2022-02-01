@@ -1,0 +1,163 @@
+<!-- Author: John Nicholson -->
+<!-- HTML file for an example cheesecake ordering website -->
+<!DOCTYPE html>
+<html>
+<body>
+<!-- CSS link -->
+<link rel="stylesheet" href="HW1_CSS.css">
+
+	<h1>Cheesecake Order Form</h1>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"/>
+ 	</script>
+	<!-- Link for picture of cheesecake -->
+	<img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Mondays_at_Il_Forno_-_Cheesecake_with_strawberry_sauce.jpg" alt="Cheesecake" style="width:150px;height:175px;"></img>
+	<p id="second" style="display:none">Thank you! Your Order has been placed</p>
+	<table id="first">
+		<tr>
+			<td>Quantity</td>
+			<td>Topping</td>
+		</tr>
+		<tr>
+			<td>
+ 			<!-- Dropdown menu -->
+			<select name="quantity" id="quantity">
+			<option value ="0">0</option>
+			<option value ="1">1</option>
+			<option value ="2">2</option>
+			<option value ="3">3</option>
+			</select>
+			</td>
+		
+		
+			<td>
+				<dl id="radios">
+					<!-- Type of cheesecake buttons in a list -->
+					<dt>
+					<input type="radio" id="fla1" name="flavour" value="Plain">
+					<label for="fla1">Plain</label>
+					</dt>
+
+					<dt>
+					<input type="radio" id="fla2" name="flavour" value="Cherry">
+					<label for="fla2">Cherry</label>
+					</dt>
+		
+					<dt>
+					<input type="radio" id="fla3" name="flavour" value="Chocolate">
+					<label for="fla1">Chocolate</label>
+					</dt>
+	
+				</dl>
+			</td>
+		</tr>
+	
+	</table>
+	<p id="notes">Notes:</p>
+	<p id="warning" style="display:none">WARNING! ORDER CONTAINS DAIRY</p>
+	<!-- Notes section -->
+	<textarea id="textarea" rows="4" cols="50"></textarea>
+	<br><br>
+	<script>
+	<!-- Function for submit button -->
+	<!-- Used code from https://www.geeksforgeeks.org/how-to-get-value-of-selected-radio-button-using-javascript/ -->
+	function myFunction() {
+		let myText = document.getElementById("textarea").value;
+		if(myText.toLowerCase().includes("vegan")) {
+			document.getElementById("warning").style.display = "block";
+		}
+		else {
+			document.getElementById("first").style.display = "none";
+			document.getElementById("textarea").style.display = "none";
+			document.getElementById("second").style.display = "block";
+			document.getElementById("notes").style.display = "none";
+			document.getElementById("button").style.display = "none";
+			var p = document.getElementById("second");
+			p.textContent += " Quantity: ";
+			p.textContent += document.getElementById("quantity").value;
+			p.textContent += " Flavor: ";
+			var ele = document.getElementsByName('flavour');
+			for(i = 0; i < ele.length; i++) {
+				if(ele[i].checked){
+				p.textContent += ele[i].value;
+			}
+		}
+	
+	}
+		p.textContent += " Notes: ";
+		p.textContent += myText;
+	}
+	
+	</script>
+	<script>
+	$(document).ready(function(){
+	$("Jan").click(function(){
+	$("month").text("Jan");
+	});
+	$("Feb").click(function(){
+	$("month").html("<b>Feb<b>");
+	});
+	$("Mar").click(function(){
+	$("month").html("<b>Mar<b>");
+	});
+	$("Apr").click(function(){
+	$("month").html("<b>Apr<b>");
+	});
+	$("May").click(function(){
+	$("month").html("<b>May<b>");
+	});
+	$("Jun").click(function(){
+	$("month").html("<b>Jun<b>");
+	});
+	$("Jul").click(function(){
+	$("month").html("<b>Jul<b>");
+	});
+	$("Aug").click(function(){
+	$("month").html("<b>Aug<b>");
+	});
+	$("Sep").click(function(){
+	$("month").html("<b>Sep<b>");
+	});
+	$("Oct").click(function(){
+	$("month").html("<b>Oct<b>");
+	});
+	$("Nov").click(function(){
+	$("month").html("<b>Nov<b>");
+	});
+	$("Dec").click(function(){
+	$("month").html("<b>Dec<b>");
+	});
+	</script>
+	<!-- Used this website for dropdown menu https://www.w3schools.com/howto/howto_css_dropdown.asp -->
+	<button id="button" type="button" onclick="myFunction()">Order</button>
+	<br>
+	<div class = "dropdown">
+		<h3>Total Orders Last</h3>
+		<button id="month">Jan</button>
+		<div class="dropdown-content">
+		<a id="Jan" value="Jan">Jan</a>
+		<a id="Feb" value="Feb">Feb</a>
+		<a id="Mar" value="Mar">Mar</a>
+		<a id="Apr" value="Apr">Apr</a>
+		<a id="May" value="May">May</a>
+		<a id="Jun" value="Jun">Jun</a>
+		<a id="Jul" value="Jul">Jul</a>
+		<a id="Aug" value="Aug">Aug</a>
+		<a id="Sep" value="Sep">Sep</a>
+		<a id="Oct" value="Oct">Oct</a>
+		<a id="Nov" value="Nov">Nov</a>
+		<a id="Dec" value="Dec">Dec</a>
+		</div>
+	</div>
+
+	<ul>
+		<li>11 Cherry</li>
+		<li>17 Chocolate</li>
+		<li>31 Plain</li>
+	</ul>
+
+	
+	
+
+</body>
+</html>
